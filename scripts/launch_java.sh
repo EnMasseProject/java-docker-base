@@ -14,7 +14,7 @@ if [ "${JAVA_DEBUG}" == "true" ]; then
 fi
 
 # Make sure that we use /dev/urandom
-JAVA_OPTS="${JAVA_OPTS} -DLOG_LEVEL=${LOG_LEVEL} -Dvertx.cacheDirBase=/tmp -Djava.security.egd=file:/dev/./urandom"
+JAVA_OPTS="${JAVA_OPTS} -DLOG_LEVEL=${LOG_LEVEL} -Dvertx.disableDnsResolver=true -Duser.timezone=UTC -Dvertx.cacheDirBase=/tmp -Djava.security.egd=file:/dev/./urandom"
 
 JAVA_OPTS="$(adjust_java_options ${JAVA_OPTS}) ${java_debug_args}"
 
