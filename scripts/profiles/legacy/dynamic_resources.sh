@@ -10,7 +10,7 @@ JAVA_MAX_MEM_RATIO=${JAVA_MAX_MEM_RATIO:-$(echo "${CONTAINER_HEAP_PERCENT:-0.5}"
 JAVA_INITIAL_MEM_RATIO=${JAVA_INITIAL_MEM_RATIO:-${INITIAL_HEAP_PERCENT:+$(echo "${INITIAL_HEAP_PERCENT}" "100" | awk '{ printf "%d", $1 * $2 }')}}
 
 function source_java_run_scripts() {
-    local java_scripts_dir="/opt/run-java"
+    local java_scripts_dir="/opt/run-java/profiles/legacy"
     # set CONTAINER_MAX_MEMORY and CONTAINER_CORE_LIMIT
     source "${java_scripts_dir}/container-limits"
     # load java options functions
@@ -32,7 +32,7 @@ get_initial_heap_size() {
 
 # deprecated, left for backward compatibility
 adjust_java_heap_settings() {
-    local java_scripts_dir="/opt/run-java"
+    local java_scripts_dir="/opt/run-java/profiles/legacy"
     
     # nuke any hard-coded memory settings.  java-default-options won't add these
     # if they're already specified
@@ -69,7 +69,7 @@ unsupported_options() {
 adjust_java_options() {
     local options="$@"
     local remove_xms
-    local java_scripts_dir="/opt/run-java"
+    local java_scripts_dir="/opt/run-java/profiles/legacy"
     # nuke any hard-coded memory settings.  java-default-options won't add these
     # if they're already specified
     JAVA_OPTS="$(echo $JAVA_OPTS| sed -re 's/(-Xmx[^ ]*|-Xms[^ ]*)//g')"
