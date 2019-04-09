@@ -48,7 +48,7 @@ fi
 
 initialize_container_limits() {
   # we can't run without limits
-  source /opt/run-java/container-limits
+  source /opt/run-java/profiles/legacy/container-limits
 }
 
 # Check for memory options and calculate a sane default if not given
