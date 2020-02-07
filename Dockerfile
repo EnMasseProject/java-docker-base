@@ -1,8 +1,5 @@
-FROM centos:7
+FROM registry.fedoraproject.org/fedora-minimal:31 
 
-RUN yum -y update \
-  && yum -y install java-11-openjdk-devel \
-  && yum -y install openssl apr \
-  && yum -y clean all
+RUN microdnf install java-11-openjdk-devel openssl apr && microdnf clean all
 ENV JAVA_HOME /usr/lib/jvm/java
 ADD scripts/ /opt/run-java/
