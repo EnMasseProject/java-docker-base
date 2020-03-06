@@ -1,7 +1,5 @@
 #!/bin/sh
 set -x
-JAR=$1
-shift
 
 . /opt/run-java/profiles/legacy/dynamic_resources.sh
 
@@ -18,4 +16,4 @@ JAVA_OPTS="${JAVA_OPTS} -DLOG_LEVEL=${LOG_LEVEL} -Dvertx.disableDnsResolver=true
 
 JAVA_OPTS="$(adjust_java_options ${JAVA_OPTS}) ${java_debug_args}"
 
-exec java $JAVA_OPTS -jar $JAR $@
+exec java $JAVA_OPTS $@
